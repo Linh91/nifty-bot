@@ -1,7 +1,7 @@
 function Belt() {
-  self.place = function(x, y) {
-    self.x = x
-    self.y = y
+  this.place = function(x, y) {
+    this.x = x
+    this.y = y
   }
 }
 exports.Belt = Belt
