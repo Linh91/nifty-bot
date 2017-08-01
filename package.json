@@ -1,0 +1,25 @@
+{
+  "name": "nifty-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Linh91/nifty-bot.git"
+  },
+  "author": "Sammy Ha",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Linh91/nifty-bot/issues"
+  },
+  "homepage": "https://github.com/Linh91/nifty-bot#readme",
+  "dependencies": {
+    "mocha": "^3.5.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  }
+}
