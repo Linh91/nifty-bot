@@ -1,10 +1,8 @@
 function Crate() {
-  this.x = 0
-  this.y = 0
+  this.des = []
 }
-Crate.prototype.position = function (x, y) {
-  this.x = x
-  this.y = y
+Crate.prototype.description = function (x, y, gummyBears) {
+  this.des.push([x, y, gummyBears])
 };
 
 exports.Crate = Crate

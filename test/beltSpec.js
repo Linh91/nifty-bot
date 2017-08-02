@@ -2,7 +2,7 @@ var sim = require("../belt")
 var assert = require('assert');
 
 describe('Belt', function() {
-  describe('conveyor-belt', function() {
+  describe('conveyor-belt position', function() {
     it('should be given a postion and returns that position', function() {
       var belt = new sim.Belt()
       belt.position(2,1)

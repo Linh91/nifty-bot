@@ -2,7 +2,7 @@ var bot = require("../robot")
 var assert = require('assert');
 
 describe('Robot', function() {
-  describe('robot', function() {
+  describe('position', function() {
     it('should be given a postion and returns that position', function() {
       var robot = new bot.Robot()
       robot.position(2,1)
