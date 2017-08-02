@@ -14,7 +14,7 @@ describe('Robot', function() {
       var robot = new bot.Robot()
       robot.place(4,9)
       assert.equal(robot.x, 4)
-      assert.equal(robot.y, 1)
+      assert.equal(robot.y, 9)
     });
   });
 });
