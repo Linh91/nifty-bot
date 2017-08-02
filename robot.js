@@ -2,7 +2,7 @@ function Robot() {
   this.x = 0
   this.y = 0
 }
-Robot.prototype.place = function (x, y) {
+Robot.prototype.position = function (x, y) {
   this.x = x
   this.y = y
 };
