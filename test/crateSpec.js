@@ -15,13 +15,4 @@ describe('Crate', function() {
       assert.deepEqual(crate.des, [ [ 8, 3, 8 ] ])
     });
   });
-
-  describe ('gummy bear quanity', function() {
-    it('should be given the quanitites of gummy bears', function() {
-      var crate = new box.Crate()
-      crate.description(8, 3, 2)
-      assert.equal(crate.x, 8)
-      assert.equal(crate.y, 3)
-    })
-  })
 });
