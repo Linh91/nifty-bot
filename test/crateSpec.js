@@ -11,7 +11,7 @@ describe('Crate', function() {
     });
 
     it('should return the correct cordinates of positive', function() {
-      var belt = new sim.Belt()
+      var belt = new box.Crate()
       belt.position(8,3)
       assert.equal(belt.x, 8)
       assert.equal(belt.y, 3)
