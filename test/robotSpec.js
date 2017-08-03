@@ -50,5 +50,20 @@ describe('Robot', function() {
         assert.equal(robot.belt.y, 1)
       });
     });
+
+    describe('crate', function() {
+      it('should be able to give information about crate', function() {
+        var robot = new Robot();
+        robot.crate.description(2, 5, 2);
+        assert.deepEqual(robot.crate.des, [ [ 2, 5, 2 ] ])
+      });
+
+      // it('should return x, y cordinates', function() {
+      //   var robot = new Robot();
+      //   robot.belt.position(8, 1);
+      //   assert.equal(robot.belt.x, 8)
+      //   assert.equal(robot.belt.y, 1)
+      // });
+    });
   });
 });

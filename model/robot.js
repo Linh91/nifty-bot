@@ -5,6 +5,7 @@ const Robot = function() {
   this.x = 0
   this.y = 0
   this.belt = new Belt()
+  this.crate = new Crate()
 }
 
 Robot.prototype.position = function (x, y) {
