@@ -1,6 +1,10 @@
-function Robot() {
+const Belt = require('./belt.js')
+const Crate = require('./crate.js')
+
+const Robot = function() {
   this.x = 0
   this.y = 0
+  this.belt = new Belt()
 }
 
 Robot.prototype.position = function (x, y) {
@@ -11,4 +15,4 @@ Robot.prototype.instruct = function(arguments) {
   return(arguments.split(''))
 };
 
-exports.Robot = Robot
+module.exports = Robot;
