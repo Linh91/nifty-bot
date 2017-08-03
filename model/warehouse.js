@@ -21,10 +21,22 @@ Warehouse.prototype.instruct = function(arguments) {
 
 Warehouse.prototype.output = function () {
   if (this.instructions[0] == "n") {
-    this.robot.y += 1
-    if (this.robot.x && this.robot.y == this.crate.x && this.crate.y) {
-      console.log("this works")
-    }
+    this.robot.position[1] += 1
+  } else if (this.instructions[0] == "e") {
+    this.robot.position[0] += 1
+  } else if (this.instructions[0] == "s") {
+    this.robot.position[1] -= 1
+  } else if (this.instructions[0] == "w") {
+    this.robot.position[0] -= 1
   }
 };
+
+// Warehouse.prototype.pickupBags = function () {
+//   if (this.robot.position.toString() == this.crate.position.toString()) {
+//     this.pickupBags();
+//   }
+//   this.passedInstruct.push(this.instructions[0])
+//   this.instructions.shift()
+//   this.output();
+// };
 module.exports = Warehouse;

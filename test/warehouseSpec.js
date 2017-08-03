@@ -58,4 +58,14 @@ describe('Warehouse', function() {
       assert.equal(warehouse.crate.bags, 6)
     });
   });
+
+  describe('Moving robot', function() {
+    it('will descrease y when north', function() {
+      var warehouse = new Warehouse();
+      warehouse.robot.givePosition(1,1);
+      warehouse.instruct("n");
+      warehouse.output()
+      assert.deepEqual(warehouse.robot.position, [ 1, 2 ])
+    })
+  })
 })
