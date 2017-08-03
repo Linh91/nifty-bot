@@ -28,5 +28,10 @@ describe('Robot', function() {
       var robot = new bot.Robot()
       assert.deepEqual(robot.instruct("nppsse"), ["n", "p", "p", "s", "s", "e"])
     });
+
+    it('can be unlimited', function() {
+      var robot = new bot.Robot()
+      assert.deepEqual(robot.instruct("newpsesennppppeeee"), ["n", "e", "w", "p", "s", "e","s", "e","n", "n", "p", "p", "p", "p", "e","e","e","e",])
+    });
   });
 });
