@@ -6,16 +6,14 @@ describe('Robot', function() {
   describe('position', function() {
     it('should be given a postion and returns that position', function() {
       var robot = new Robot()
-      robot.position(2,1)
-      assert.equal(robot.x, 2)
-      assert.equal(robot.y, 1)
+      robot.givePosition(2,1)
+      assert.deepEqual(robot.position, [ 2, 1 ])
     });
 
     it('should return cordinated position', function() {
       var robot = new Robot()
-      robot.position(4,9)
-      assert.equal(robot.x, 4)
-      assert.equal(robot.y, 9)
+      robot.givePosition(4,9)
+      assert.deepEqual(robot.position, [ 4, 9 ])
     });
   });
 });

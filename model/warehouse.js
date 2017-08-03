@@ -22,6 +22,9 @@ Warehouse.prototype.instruct = function(arguments) {
 Warehouse.prototype.output = function () {
   if (this.instructions[0] == "n") {
     this.robot.y += 1
+    if (this.robot.x && this.robot.y == this.crate.x && this.crate.y) {
+      console.log("this works")
+    }
   }
 };
 module.exports = Warehouse;
