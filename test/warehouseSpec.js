@@ -47,16 +47,14 @@ describe('Warehouse', function() {
     it('should be able to give information about crate', function() {
       var warehouse = new Warehouse();
       warehouse.crate.description(2, 5, 2);
-      assert.equal(warehouse.crate.x, 2)
-      assert.equal(warehouse.crate.y, 5)
+      assert.deepEqual(warehouse.crate.position, [ 2, 5 ])
       assert.equal(warehouse.crate.bags, 2)
     });
 
     it('will return details about crate', function() {
       var warehouse = new Warehouse();
       warehouse.crate.description(4, 1, 6);
-      assert.equal(warehouse.crate.x, 4)
-      assert.equal(warehouse.crate.y, 1)
+      assert.deepEqual(warehouse.crate.position, [ 4, 1 ])
       assert.equal(warehouse.crate.bags, 6)
     });
   });
