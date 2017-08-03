@@ -32,16 +32,14 @@ describe('Warehouse', function() {
   describe('belt', function() {
     it('should be able to give belt a position', function() {
       var warehouse = new Warehouse();
-      warehouse.belt.position(2, 5);
-      assert.equal(warehouse.belt.x, 2)
-      assert.equal(warehouse.belt.y, 5)
+      warehouse.belt.givePosition(2, 5);
+      assert.deepEqual(warehouse.belt.position, [ 2, 5 ])
     });
 
     it('should return x, y cordinates', function() {
       var warehouse = new Warehouse();
-      warehouse.belt.position(8, 1);
-      assert.equal(warehouse.belt.x, 8)
-      assert.equal(warehouse.belt.y, 1)
+      warehouse.belt.givePosition(8, 1);
+      assert.deepEqual(warehouse.belt.position, [ 8, 1 ])
     });
   });
 
