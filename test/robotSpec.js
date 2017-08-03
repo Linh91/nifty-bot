@@ -17,10 +17,16 @@ describe('Robot', function() {
       assert.equal(robot.y, 9)
     });
   });
+
   describe('instructions', function() {
     it('are given for the robot', function() {
       var robot = new bot.Robot()
-      assert.deepEqual(robot.instructions("n","s"), ["n", "s"])
+      assert.deepEqual(robot.instruct("ns"), ["n", "s"])
+    });
+
+    it('can be any number of characters', function() {
+      var robot = new bot.Robot()
+      assert.deepEqual(robot.instruct("nppsse"), ["n", "p", "p", "s", "s", "e"])
     });
   });
 });
