@@ -64,16 +64,32 @@ describe('Warehouse', function() {
       var warehouse = new Warehouse();
       warehouse.robot.givePosition(1,1);
       warehouse.instruct("n");
-      warehouse.output()
-      assert.deepEqual(warehouse.robot.position, [ 1, 2 ])
-    })
+      warehouse.output();
+      assert.deepEqual(warehouse.robot.position, [ 1, 2 ]);
+    });
 
     it('y cordinates will increase when N', function() {
       var warehouse = new Warehouse();
       warehouse.robot.givePosition(4,2);
       warehouse.instruct("n");
-      warehouse.output()
-      assert.deepEqual(warehouse.robot.position, [ 4, 3 ])
-    })
-  })
-})
+      warehouse.output();
+      assert.deepEqual(warehouse.robot.position, [ 4, 3 ]);
+    });
+
+    it('will increase x when east', function() {
+      var warehouse = new Warehouse();
+      warehouse.robot.givePosition(1,1);
+      warehouse.instruct("e");
+      warehouse.output();
+      assert.deepEqual(warehouse.robot.position, [ 2, 1 ]);
+    });
+
+    it('x cordinates will increase when E', function() {
+      var warehouse = new Warehouse();
+      warehouse.robot.givePosition(4,2);
+      warehouse.instruct("e");
+      warehouse.output();
+      assert.deepEqual(warehouse.robot.position, [ 5, 2 ]);
+    });
+  });
+});
