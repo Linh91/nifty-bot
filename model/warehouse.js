@@ -18,4 +18,10 @@ Warehouse.prototype.instruct = function(arguments) {
     this.instructions = this.instructions.concat(arguments)
   }
 };
+
+Warehouse.prototype.output = function () {
+  if (this.instructions[0] == "n") {
+    this.robot.y += 1
+  }
+};
 module.exports = Warehouse;
