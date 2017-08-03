@@ -91,5 +91,21 @@ describe('Warehouse', function() {
       warehouse.output();
       assert.deepEqual(warehouse.robot.position, [ 5, 2 ]);
     });
+
+    it('will decrease y when south', function() {
+      var warehouse = new Warehouse();
+      warehouse.robot.givePosition(5,3);
+      warehouse.instruct("e");
+      warehouse.output();
+      assert.deepEqual(warehouse.robot.position, [ 5, 2 ]);
+    });
+
+    it('y cordinates will decrease when S', function() {
+      var warehouse = new Warehouse();
+      warehouse.robot.givePosition(8,2);
+      warehouse.instruct("e");
+      warehouse.output();
+      assert.deepEqual(warehouse.robot.position, [ 8, 1 ]);
+    });
   });
 });
