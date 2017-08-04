@@ -63,7 +63,7 @@ describe('Warehouse', function() {
       var warehouse = new Warehouse();
       warehouse.robot.givePosition(1,1);
       warehouse.commands("nesepp");
-      warehouse.output();
+      warehouse.run();;
       assert.deepEqual(warehouse.robot.position, [ 1, 2 ]);
     });
 
@@ -71,7 +71,7 @@ describe('Warehouse', function() {
       var warehouse = new Warehouse();
       warehouse.robot.givePosition(4,2);
       warehouse.commands("nssepp");
-      warehouse.output();
+      warehouse.run();;
       assert.deepEqual(warehouse.robot.position, [ 4, 3 ]);
     });
 
@@ -79,7 +79,7 @@ describe('Warehouse', function() {
       var warehouse = new Warehouse();
       warehouse.robot.givePosition(1,1);
       warehouse.commands("eesepp");
-      warehouse.output();
+      warehouse.run();;
       assert.deepEqual(warehouse.robot.position, [ 2, 1 ]);
     });
 
@@ -87,7 +87,7 @@ describe('Warehouse', function() {
       var warehouse = new Warehouse();
       warehouse.robot.givePosition(4,2);
       warehouse.commands("essepp");
-      warehouse.output();
+      warehouse.run();;
       assert.deepEqual(warehouse.robot.position, [ 5, 2 ]);
     });
 
@@ -95,7 +95,7 @@ describe('Warehouse', function() {
       var warehouse = new Warehouse();
       warehouse.robot.givePosition(5,3);
       warehouse.commands("sssepp");
-      warehouse.output();
+      warehouse.run();;
       assert.deepEqual(warehouse.robot.position, [ 5, 2 ]);
     });
 
@@ -103,7 +103,7 @@ describe('Warehouse', function() {
       var warehouse = new Warehouse();
       warehouse.robot.givePosition(8,2);
       warehouse.commands("swsepp");
-      warehouse.output();
+      warehouse.run();;
       assert.deepEqual(warehouse.robot.position, [ 8, 1 ]);
     });
 
@@ -111,7 +111,7 @@ describe('Warehouse', function() {
       var warehouse = new Warehouse();
       warehouse.robot.givePosition(9,4);
       warehouse.commands("wpsepp");
-      warehouse.output();
+      warehouse.run();;
       assert.deepEqual(warehouse.robot.position, [ 8, 4 ]);
     });
 
@@ -119,7 +119,7 @@ describe('Warehouse', function() {
       var warehouse = new Warehouse();
       warehouse.robot.givePosition(0,2);
       warehouse.commands("wpsepp");
-      warehouse.output();
+      warehouse.run();;
       assert.deepEqual(warehouse.robot.position, [ -1, 2 ]);
     });
   });
@@ -129,14 +129,14 @@ describe('Warehouse', function() {
       var warehouse = new Warehouse();
       warehouse.robot.givePosition(0,2);
       warehouse.commands("wppdd");
-      warehouse.output();
+      warehouse.run();;
       assert.deepEqual(warehouse.instructions, [ "p", "p", "d", "d" ]);
     });
     it('carries out instructions and once executes removes that instruction', function() {
       var warehouse = new Warehouse();
       warehouse.robot.givePosition(0,2);
       warehouse.commands("wnpdd");
-      warehouse.output();
+      warehouse.run();;
       assert.deepEqual(warehouse.instructions, [ "n", "p", "d", "d" ]);
     });
   });
@@ -149,17 +149,26 @@ describe('Warehouse', function() {
       warehouse.crate.details(0,1,10)
       warehouse.crate.details(-1,-2,5)
       warehouse.commands("npppnd")
-      warehouse.output();
+      warehouse.run();;
       assert.deepEqual(warehouse.robot.position, [ 0, 1 ]);
-      warehouse.output();
+      warehouse.run();;
       assert.deepEqual(warehouse.bags, 1);
     });
 
     it('does not accept anything that isnt NESWDP', function() {
       let spy = sinon.spy(console, 'log');
       var warehouse = new Warehouse();
-      warehouse.commands("z");
-      warehouse.output()
+      warehouse.commands("zb");
+      warehouse.run();
+      assert(spy.calledWith(0))
+      spy.restore();
+    });
+
+    it('returns error when wrong commands', function() {
+      let spy = sinon.spy(console, 'log');
+      var warehouse = new Warehouse();
+      warehouse.commands("bc");
+      warehouse.run();
       assert(spy.calledWith(0))
       spy.restore();
     });

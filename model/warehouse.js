@@ -3,30 +3,25 @@ const Crate = require('./crate.js')
 const Robot = require('./robot.js')
 
 const Warehouse = function() {
-  this.belt = new Belt()
-  this.crate = new Crate()
-  this.robot = new Robot()
-  this.instructions = []
-  this.bags = 0
-  this.droppedBags = 0
-  this.cratePos = []
+  this.belt = new Belt();
+  this.crate = new Crate();
+  this.robot = new Robot();
+  this.instructions = [];
+  this.bags = 0;
+  this.droppedBags = 0;
+  this.cratePos = [];
 }
 
 Warehouse.prototype.commands = function(arguments) {
   if (typeof arguments == 'string') arguments = arguments.split('');
-  return this.instructions = this.instructions.concat(arguments)
+  return this.instructions = this.instructions.concat(arguments);
 };
 
-Warehouse.prototype.output = function () {
-  if (this.instructions[0] == "n" || this.instructions[0] == "s") {
-    this.yAxis()
-  } else if (this.instructions[0] == "e" || this.instructions[0] == "w") {
-    this.xAxis();
-  } else if (this.instructions[0] == "d" || this.instructions[0] == "p") {
-    return this.bagDuty()
-  } else {
-    this.broken()
-  }
+Warehouse.prototype.run = function () {
+  if (this.instructions[0] == "n" || this.instructions[0] == "s") this.yAxis();
+  else if (this.instructions[0] == "e" || this.instructions[0] == "w") this.xAxis();
+  else if (this.instructions[0] == "d" || this.instructions[0] == "p") return this.bagDuty();
+  else this.broken();
 };
 
 Warehouse.prototype.yAxis = function () {
