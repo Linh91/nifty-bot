@@ -28,3 +28,5 @@
                                          (_______)(_______)
                                         |        ||        |
                                         '--------''--------'
+
+This is a robot application that can take commands, navigate to crates, load from crates and navigates to conveyor-belt.
