@@ -27,11 +27,7 @@ Warehouse.prototype.output = function () {
   } else if (this.instructions[0] == "s") {
     this.south()
   } else if (this.instructions[0] == "w") {
-    this.robot.position[0] -= 1
-    this.instructions.shift()
-    if (this.robot.position.toString() == this.crate.position.toString()) {
-      this.pickupBags()
-    }
+    this.west();
   } else if (this.instructions[0] == "d") {
      return this.drop()
   } else if (this.instructions[0] == "p") {
@@ -62,6 +58,15 @@ Warehouse.prototype.south = function () {
     this.pickupBags()
   }
 };
+
+Warehouse.prototype.west = function () {
+  this.robot.position[0] -= 1
+  this.instructions.shift()
+  if (this.robot.position.toString() == this.crate.position.toString()) {
+    this.pickupBags()
+  }
+};
+
 Warehouse.prototype.pickupBags = function () {
     this.bags += 1
     this.instructions.shift()
