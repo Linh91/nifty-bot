@@ -21,52 +21,62 @@ Warehouse.prototype.instruct = function(arguments) {
 
 Warehouse.prototype.output = function () {
   if (this.instructions[0] == "n") {
-    this.north()
+     this.north()
   } else if (this.instructions[0] == "e") {
-    this.east();
+     this.xAxis();
   } else if (this.instructions[0] == "s") {
-    this.south()
+     this.south()
   } else if (this.instructions[0] == "w") {
-    this.west();
+     this.xAxis();
   } else if (this.instructions[0] == "d") {
      return this.drop()
-  } else if (this.instructions[0] == "p") {
-     this.pickupBags()
+  } else {
+     this.broken()
   }
 };
 
 Warehouse.prototype.north = function () {
   this.robot.position[1] += 1
   this.instructions.shift()
-  if (this.robot.position.toString() == this.crate.position.toString()) {
-    this.pickupBags()
-  }
+  this.checkingPosition();
 };
 
-Warehouse.prototype.east = function () {
-  this.robot.position[0] += 1
-  this.instructions.shift()
-  if (this.robot.position.toString() == this.crate.position.toString()) {
-    this.pickupBags()
+// Warehouse.prototype.east = function () {
+//   this.robot.position[0] += 1
+//   this.instructions.shift()
+//   this.checkingPosition();
+// };
+//
+// Warehouse.prototype.west = function () {
+//   this.robot.position[0] -= 1
+//   this.instructions.shift()
+//   this.checkingPosition();
+// };
+
+Warehouse.prototype.xAxis = function () {
+  if (this.instructions[0] == "e") {
+    this.robot.position[0] += 1
+  } else {
+    this.robot.position[0] -= 1
   }
+  this.instructions.shift()
+  this.checkingPosition();
 };
 
 Warehouse.prototype.south = function () {
   this.robot.position[1] -= 1
   this.instructions.shift()
-  if (this.robot.position.toString() == this.crate.position.toString()) {
-    this.pickupBags()
-  }
+  this.checkingPosition();
 };
 
-Warehouse.prototype.west = function () {
-  this.robot.position[0] -= 1
-  this.instructions.shift()
-  if (this.robot.position.toString() == this.crate.position.toString()) {
-    this.pickupBags()
-  }
-};
 
+Warehouse.prototype.checkingPosition = function () {
+  if (this.robot.position.toString() == this.crate.position.toString()) {
+    if (this.instructions[0] == "p") {
+      this.pickupBags()
+    };
+  };
+};
 Warehouse.prototype.pickupBags = function () {
     this.bags += 1
     this.instructions.shift()
@@ -86,6 +96,7 @@ Warehouse.prototype.print = function () {
 };
 
 Warehouse.prototype.broken = function () {
+  console.log(this.bags)
   console.log(this.robot.position.toString() + " BROKEN")
 };
 
