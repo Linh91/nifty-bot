@@ -20,7 +20,7 @@ Warehouse.prototype.commands = function(arguments) {
 Warehouse.prototype.run = function () {
   if (this.instructions[0] == "n" || this.instructions[0] == "s") this.yAxis();
   else if (this.instructions[0] == "e" || this.instructions[0] == "w") this.xAxis();
-  else if (this.instructions[0] == "d" || this.instructions[0] == "p") return this.pickDropFunction();
+  else if (this.instructions[0] == "d" || this.instructions[0] == "p") this.pickDropFunction();
   else this.broken();
 };
 
@@ -57,7 +57,7 @@ Warehouse.prototype.multiplePickups = function () {
 
 Warehouse.prototype.pickup = function () {
   if (this.instructions[1] == "p") this.multiplePickups();
-  else {
+  else if (this.instructions[1] != "p") {
     this.multiplePickups();
     this.crate.cratesArray.splice(0,1);
   };
@@ -65,11 +65,11 @@ Warehouse.prototype.pickup = function () {
 
 Warehouse.prototype.commandOutput = function () {
   this.instructions.shift();
-  if (this.instructions.length == 0) return this.print();
+  if (this.instructions.length == 0) return this.status();
   this.run();
 };
 
-Warehouse.prototype.print = function () {
+Warehouse.prototype.status = function () {
   console.log(this.droppedBags);
   console.log(this.robot.position.toString() + " OK");
 };
