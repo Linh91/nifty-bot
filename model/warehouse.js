@@ -4,7 +4,7 @@ const Robot = require('./robot.js')
 
 const Warehouse = function() {
   this.belt = new Belt()
-  this.crate = new Crate()
+  this.crates = new Crate()
   this.robot = new Robot()
   this.instructions = []
   this.bags = 0
@@ -40,7 +40,7 @@ Warehouse.prototype.xAxis = function () {
 
 Warehouse.prototype.bagDuty = function () {
   if (this.instructions[0] == "p" && this.robot.position.toString() == this.crate.position.toString()) {
-    this.bags += 1;
+    if (this.crate.bags > 0) this.bags += 1;
   } else if (this.instructions[0] == "d" && this.robot.position.toString() == this.belt.position.toString()) {
     this.dropBags = this.bags;
   } else {

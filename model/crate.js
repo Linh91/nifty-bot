@@ -1,10 +1,9 @@
-const Crate = function() {
-  this.position = []
-  this.bags = 0
+const Crates = function() {
+  this.cratesArray = []
 }
-Crate.prototype.description = function (x, y, gummyBears) {
-  this.position.push(x, y)
-  this.bags = gummyBears
+
+Crates.prototype.details = function (x, y, gummyBears) {
+  this.cratesArray.push([x, y, gummyBears])
 };
 
-module.exports = Crate
+module.exports = Crates
