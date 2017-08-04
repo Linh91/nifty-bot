@@ -31,6 +31,8 @@
 
 This is a robot application that can take commands, navigate to crates, load from crates and navigates to conveyor-belt.
 
+<bold>*Technologies: Node.js, Mocha, JavaScript*</bold>
+
 ### Input
 - Give x, y cordinates for conveyor-belt
 - Give x, y cordinates for robot start position
