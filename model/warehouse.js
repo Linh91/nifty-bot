@@ -24,7 +24,7 @@ Warehouse.prototype.output = function () {
   } else if (this.instructions[0] == "d" || this.instructions[0] == "p") {
     return this.bagDuty()
   } else {
-    this.broken()
+    this.print()
   }
 };
 
@@ -38,22 +38,9 @@ Warehouse.prototype.xAxis = function () {
   this.instructions.shift()
 };
 
-// Warehouse.prototype.checkingPosition = function () {
-//   this.instructions.shift()
-//   if (this.robot.position.toString() == this.crate.position.toString() && this.instructions[0] == "p") {
-//     this.pickupBags()
-//   };
-// };
-
 Warehouse.prototype.pickupBags = function () {
   this.bags += 1
-  // this.instructions.shift()
 }
-//
-// Warehouse.prototype.drop = function () {
-//   this.instructions.shift()
-//   if (this.robot.position.toString() == this.belt.position.toString()) this.dropBags = this.bags;
-// };
 
 Warehouse.prototype.bagDuty = function () {
   if (this.instructions[0] == "p" && this.robot.position.toString() == this.crate.position.toString()) {
