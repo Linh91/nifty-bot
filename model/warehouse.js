@@ -21,11 +21,11 @@ Warehouse.prototype.instruct = function(arguments) {
 
 Warehouse.prototype.output = function () {
   if (this.instructions[0] == "n") {
-     this.north()
+     this.yAxis()
   } else if (this.instructions[0] == "e") {
      this.xAxis();
   } else if (this.instructions[0] == "s") {
-     this.south()
+     this.yAxis()
   } else if (this.instructions[0] == "w") {
      this.xAxis();
   } else if (this.instructions[0] == "d") {
@@ -35,48 +35,29 @@ Warehouse.prototype.output = function () {
   }
 };
 
-Warehouse.prototype.north = function () {
-  this.robot.position[1] += 1
-  this.instructions.shift()
+Warehouse.prototype.yAxis = function () {
+  if (this.instructions[0] == "n") {
+    this.robot.position[1] += 1
+  } else {
+    this.robot.position[1] -= 1
+  }
   this.checkingPosition();
 };
-
-// Warehouse.prototype.east = function () {
-//   this.robot.position[0] += 1
-//   this.instructions.shift()
-//   this.checkingPosition();
-// };
-//
-// Warehouse.prototype.west = function () {
-//   this.robot.position[0] -= 1
-//   this.instructions.shift()
-//   this.checkingPosition();
-// };
 
 Warehouse.prototype.xAxis = function () {
-  if (this.instructions[0] == "e") {
-    this.robot.position[0] += 1
-  } else {
-    this.robot.position[0] -= 1
-  }
-  this.instructions.shift()
+  (this.instructions[0] == "e") ? this.robot.position[0] += 1 : this.robot.position[0] -= 1
   this.checkingPosition();
 };
-
-Warehouse.prototype.south = function () {
-  this.robot.position[1] -= 1
-  this.instructions.shift()
-  this.checkingPosition();
-};
-
 
 Warehouse.prototype.checkingPosition = function () {
+  this.instructions.shift()
   if (this.robot.position.toString() == this.crate.position.toString()) {
     if (this.instructions[0] == "p") {
       this.pickupBags()
     };
   };
 };
+
 Warehouse.prototype.pickupBags = function () {
     this.bags += 1
     this.instructions.shift()
@@ -87,7 +68,7 @@ Warehouse.prototype.drop = function () {
    return this.print()
  } else {
    return 0
- }
+ };
 };
 
 Warehouse.prototype.print = function () {
