@@ -107,5 +107,21 @@ describe('Warehouse', function() {
       warehouse.output();
       assert.deepEqual(warehouse.robot.position, [ 8, 1 ]);
     });
+
+    it('will decrease x when west', function() {
+      var warehouse = new Warehouse();
+      warehouse.robot.givePosition(9,4);
+      warehouse.instruct("w");
+      warehouse.output();
+      assert.deepEqual(warehouse.robot.position, [ 8, 4 ]);
+    });
+
+    it('x cordinates will decrease when W', function() {
+      var warehouse = new Warehouse();
+      warehouse.robot.givePosition(0,2);
+      warehouse.instruct("w");
+      warehouse.output();
+      assert.deepEqual(warehouse.robot.position, [ -1, 2 ]);
+    });
   });
 });
