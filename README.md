@@ -33,5 +33,5 @@ This is a robot application that can take commands, navigate to crates, load fro
 
 ### How to get started
 
-<code> git clone https://github.com/Linh91/nifty-bot.git </code>
+<code> git clone https://github.com/Linh91/nifty-bot.git </code> <br>
 <code> npm install </code>
