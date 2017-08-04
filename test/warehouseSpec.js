@@ -61,7 +61,7 @@ describe('Warehouse', function() {
     it('will increase y when north', function() {
       var warehouse = new Warehouse();
       warehouse.robot.givePosition(1,1);
-      warehouse.commands("n");
+      warehouse.commands("nesepp");
       warehouse.output();
       assert.deepEqual(warehouse.robot.position, [ 1, 2 ]);
     });
@@ -69,7 +69,7 @@ describe('Warehouse', function() {
     it('y cordinates will increase when N', function() {
       var warehouse = new Warehouse();
       warehouse.robot.givePosition(4,2);
-      warehouse.commands("n");
+      warehouse.commands("nssepp");
       warehouse.output();
       assert.deepEqual(warehouse.robot.position, [ 4, 3 ]);
     });
@@ -77,7 +77,7 @@ describe('Warehouse', function() {
     it('will increase x when east', function() {
       var warehouse = new Warehouse();
       warehouse.robot.givePosition(1,1);
-      warehouse.commands("e");
+      warehouse.commands("eesepp");
       warehouse.output();
       assert.deepEqual(warehouse.robot.position, [ 2, 1 ]);
     });
@@ -85,7 +85,7 @@ describe('Warehouse', function() {
     it('x cordinates will increase when E', function() {
       var warehouse = new Warehouse();
       warehouse.robot.givePosition(4,2);
-      warehouse.commands("e");
+      warehouse.commands("essepp");
       warehouse.output();
       assert.deepEqual(warehouse.robot.position, [ 5, 2 ]);
     });
@@ -93,7 +93,7 @@ describe('Warehouse', function() {
     it('will decrease y when south', function() {
       var warehouse = new Warehouse();
       warehouse.robot.givePosition(5,3);
-      warehouse.commands("s");
+      warehouse.commands("sssepp");
       warehouse.output();
       assert.deepEqual(warehouse.robot.position, [ 5, 2 ]);
     });
@@ -101,7 +101,7 @@ describe('Warehouse', function() {
     it('y cordinates will decrease when S', function() {
       var warehouse = new Warehouse();
       warehouse.robot.givePosition(8,2);
-      warehouse.commands("s");
+      warehouse.commands("swsepp");
       warehouse.output();
       assert.deepEqual(warehouse.robot.position, [ 8, 1 ]);
     });
@@ -109,7 +109,7 @@ describe('Warehouse', function() {
     it('will decrease x when west', function() {
       var warehouse = new Warehouse();
       warehouse.robot.givePosition(9,4);
-      warehouse.commands("w");
+      warehouse.commands("wpsepp");
       warehouse.output();
       assert.deepEqual(warehouse.robot.position, [ 8, 4 ]);
     });
@@ -117,7 +117,7 @@ describe('Warehouse', function() {
     it('x cordinates will decrease when W', function() {
       var warehouse = new Warehouse();
       warehouse.robot.givePosition(0,2);
-      warehouse.commands("w");
+      warehouse.commands("wpsepp");
       warehouse.output();
       assert.deepEqual(warehouse.robot.position, [ -1, 2 ]);
     });
@@ -127,16 +127,16 @@ describe('Warehouse', function() {
     it('carries out instructions and once executes removes that instruction', function() {
       var warehouse = new Warehouse();
       warehouse.robot.givePosition(0,2);
-      warehouse.commands("w");
+      warehouse.commands("wppdd");
       warehouse.output();
-      assert.deepEqual(warehouse.instructions, []);
+      assert.deepEqual(warehouse.instructions, [ "p", "p", "d", "d" ]);
     });
     it('carries out instructions and once executes removes that instruction', function() {
       var warehouse = new Warehouse();
       warehouse.robot.givePosition(0,2);
-      warehouse.commands("wn");
+      warehouse.commands("wnpdd");
       warehouse.output();
-      assert.deepEqual(warehouse.instructions, [ "n" ]);
+      assert.deepEqual(warehouse.instructions, [ "n", "p", "d", "d" ]);
     });
   });
 
@@ -151,7 +151,14 @@ describe('Warehouse', function() {
       warehouse.output();
       assert.deepEqual(warehouse.robot.position, [ 0, 1 ]);
       warehouse.output();
-      assert.deepEqual(warehouse.bags, 2);
+      assert.deepEqual(warehouse.bags, 1);
     })
+    // it('does not accept anything that isnt NESWDP', function() {
+    //   var warehouse = new Warehouse();
+    //   warehouse.commands("npppnd");
+    //   console.log(warehouse.output())
+    //   expect(warehouse.output()).to.equal('BOKEN');
+    //
+    // })
   })
 });

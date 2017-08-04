@@ -49,8 +49,9 @@ Warehouse.prototype.bagDuty = function () {
   } else if (this.instructions[0] == "d" && this.robot.position.toString() == this.belt.position.toString()) {
     this.dropBags = this.bags;
     this.commandOutput()
+  } else {
+    this.broken()
   }
-  this.broken()
 }
 
 Warehouse.prototype.multiPickups = function () {
@@ -72,8 +73,9 @@ Warehouse.prototype.pickup = function () {
 
 Warehouse.prototype.commandOutput = function () {
   this.instructions.shift()
-  if (this.instructions.length <= 1) return this.print()
+  if (this.instructions.length == 0) return this.broken()
 };
+
 Warehouse.prototype.print = function () {
   console.log(this.bags)
   console.log(this.robot.position.toString() + " OK")
