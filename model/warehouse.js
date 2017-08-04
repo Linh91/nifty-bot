@@ -20,20 +20,17 @@ Warehouse.prototype.instruct = function(arguments) {
 };
 
 Warehouse.prototype.output = function () {
-  if (this.instructions[0] == "n") {
-     this.yAxis()
-  } else if (this.instructions[0] == "e") {
-     this.xAxis();
-  } else if (this.instructions[0] == "s") {
-     this.yAxis()
-  } else if (this.instructions[0] == "w") {
-     this.xAxis();
+  if (this.instructions[0] == "n" || this.instructions[0] == "s") {
+    this.yAxis()
+  } else if (this.instructions[0] == "e" || this.instructions[0] == "w") {
+    this.xAxis();
   } else if (this.instructions[0] == "d") {
      return this.drop()
   } else {
      this.broken()
   }
 };
+
 
 Warehouse.prototype.yAxis = function () {
   (this.instructions[0] == "n") ? this.robot.position[1] += 1 : this.robot.position[1] -= 1
