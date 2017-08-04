@@ -157,6 +157,20 @@ describe('Warehouse', function() {
       assert(spy.calledWith(0))
       spy.restore();
     });
+
+    it('returns output when last command is run', function() {
+      let spy = sinon.spy(console, 'log');
+      warehouse.robot.givePosition(0,2);
+      warehouse.belt.givePosition(0,2);
+      warehouse.crate.details(0,2,10);
+      warehouse.crate.details(-1,-2,5);
+      warehouse.commands("ppd");
+      warehouse.run();
+      warehouse.run();
+      warehouse.run();
+      assert(spy.calledWith(2))
+      spy.restore();
+    });
   });
 
   describe('Multiple pickups', function() {

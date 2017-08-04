@@ -62,8 +62,8 @@ Warehouse.prototype.pickup = function () {
 };
 
 Warehouse.prototype.commandOutput = function () {
-  this.instructions.shift()
-  if (this.instructions.length == 0) return this.print()
+  this.instructions.shift();
+  if (this.instructions.length == 0) return this.print();
 };
 
 Warehouse.prototype.print = function () {
