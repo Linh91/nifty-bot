@@ -53,8 +53,7 @@ An output will be given which will include:
 
 <code> git clone https://github.com/Linh91/nifty-bot.git </code> <br>
 <code> npm install </code><br>
-<code> node </code><br>
-node console <br>
+node console <code> node </code><br>
 <code> const Warehouse = require('./model/warehouse.js') </code><br>
 <code> var warehouse = new Warehouse() </code>
 ### How to run test 
