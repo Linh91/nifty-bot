@@ -229,5 +229,17 @@ describe('Warehouse', function() {
       assert(spy.calledWith(0));
       spy.restore();
     });
+
+    it('will return broken if given a d but not in correct position', function() {
+      let spy = sinon.spy(console, 'log');
+      warehouse.robot.givePosition(3,2);
+      warehouse.belt.givePosition(5,2);
+      warehouse.crate.details(0,2,10);
+      warehouse.crate.details(-1,-2,5);
+      warehouse.commands("dp");
+      warehouse.run();
+      assert(spy.calledWith(0));
+      spy.restore();
+    });
   });
 });
