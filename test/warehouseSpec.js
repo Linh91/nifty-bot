@@ -95,7 +95,7 @@ describe('Warehouse', function() {
     it('will decrease y when south', function() {
       var warehouse = new Warehouse();
       warehouse.robot.givePosition(5,3);
-      warehouse.instruct("e");
+      warehouse.instruct("s");
       warehouse.output();
       assert.deepEqual(warehouse.robot.position, [ 5, 2 ]);
     });
@@ -103,7 +103,7 @@ describe('Warehouse', function() {
     it('y cordinates will decrease when S', function() {
       var warehouse = new Warehouse();
       warehouse.robot.givePosition(8,2);
-      warehouse.instruct("e");
+      warehouse.instruct("s");
       warehouse.output();
       assert.deepEqual(warehouse.robot.position, [ 8, 1 ]);
     });
