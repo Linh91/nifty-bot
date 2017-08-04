@@ -26,12 +26,12 @@ Warehouse.prototype.run = function () {
 
 Warehouse.prototype.yAxis = function () {
   (this.instructions[0] == "N") ? this.robot.position[1] += 1 : this.robot.position[1] -= 1;
-  this.commandOutput()
+  this.commandOutput();
 };
 
 Warehouse.prototype.xAxis = function () {
   (this.instructions[0] == "S") ? this.robot.position[0] += 1 : this.robot.position[0] -= 1;
-  this.commandOutput()
+  this.commandOutput();
 };
 
 Warehouse.prototype.pickDropFunction = function () {
@@ -52,7 +52,7 @@ Warehouse.prototype.multiplePickups = function () {
   this.crate.cratesArray[0][2] -= 1
   if (this.crate.cratesArray[0][2] > -1) this.bags += 1;
   this.cratePosition = [];
-  this.commandOutput()
+  this.commandOutput();
 };
 
 Warehouse.prototype.pickup = function () {

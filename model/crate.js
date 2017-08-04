@@ -1,9 +1,9 @@
 const Crates = function() {
-  this.cratesArray = []
+  this.cratesArray = [];
 }
 
 Crates.prototype.details = function (x, y, gummyBears) {
-  this.cratesArray.push([x, y, gummyBears])
+  this.cratesArray.push([x, y, gummyBears]);
 };
 
-module.exports = Crates
+module.exports = Crates;

@@ -1,9 +1,9 @@
 const Robot = function() {
-  this.position = []
+  this.position = [];
 }
 
 Robot.prototype.givePosition = function (x, y) {
-  this.position.push(x, y)
+  this.position.push(x, y);
 };
 
 module.exports = Robot;

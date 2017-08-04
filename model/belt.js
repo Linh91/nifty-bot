@@ -1,8 +1,9 @@
 const Belt = function() {
-  this.position = []
+  this.position = [];
 }
+
 Belt.prototype.givePosition = function (x, y) {
-  this.position.push(x, y)
+  this.position.push(x, y);
 };
 
-module.exports = Belt
+module.exports = Belt;

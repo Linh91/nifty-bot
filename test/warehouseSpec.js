@@ -4,7 +4,7 @@ var assert = require('assert');
 var expect = require('chai').expect;
 
 describe('Warehouse', function() {
-  var warehouse
+  var warehouse;
 
   beforeEach(function() {
     warehouse = new Warehouse();
