@@ -38,13 +38,9 @@ Warehouse.prototype.xAxis = function () {
   this.instructions.shift()
 };
 
-Warehouse.prototype.pickupBags = function () {
-  this.bags += 1
-}
-
 Warehouse.prototype.bagDuty = function () {
   if (this.instructions[0] == "p" && this.robot.position.toString() == this.crate.position.toString()) {
-    this.pickupBags();
+    this.bags += 1;
   } else if (this.instructions[0] == "d" && this.robot.position.toString() == this.belt.position.toString()) {
     this.dropBags = this.bags;
   } else {
