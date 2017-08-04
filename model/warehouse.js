@@ -11,12 +11,8 @@ const Warehouse = function() {
 }
 
 Warehouse.prototype.instruct = function(arguments) {
-  if (typeof arguments == 'string') {
-    arguments = arguments.split('')
-    this.instructions = this.instructions.concat(arguments)
-  } else {
-    this.instructions = this.instructions.concat(arguments)
-  }
+  if (typeof arguments == 'string') arguments = arguments.split('');
+  return this.instructions = this.instructions.concat(arguments)
 };
 
 Warehouse.prototype.output = function () {
@@ -30,7 +26,6 @@ Warehouse.prototype.output = function () {
      this.broken()
   }
 };
-
 
 Warehouse.prototype.yAxis = function () {
   (this.instructions[0] == "n") ? this.robot.position[1] += 1 : this.robot.position[1] -= 1
@@ -52,8 +47,8 @@ Warehouse.prototype.checkingPosition = function () {
 };
 
 Warehouse.prototype.pickupBags = function () {
-    this.bags += 1
-    this.instructions.shift()
+  this.bags += 1
+  this.instructions.shift()
 }
 
 Warehouse.prototype.drop = function () {
