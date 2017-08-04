@@ -8,6 +8,7 @@ const Warehouse = function() {
   this.robot = new Robot()
   this.instructions = []
   this.bags = 0
+  this.dropBags = 0
 }
 
 Warehouse.prototype.instruct = function(arguments) {
@@ -21,9 +22,9 @@ Warehouse.prototype.output = function () {
   } else if (this.instructions[0] == "e" || this.instructions[0] == "w") {
     this.xAxis();
   } else if (this.instructions[0] == "d") {
-     return this.drop()
+    return this.drop()
   } else {
-     this.broken()
+    this.broken()
   }
 };
 
@@ -51,8 +52,7 @@ Warehouse.prototype.pickupBags = function () {
 
 Warehouse.prototype.drop = function () {
   this.instructions.shift()
-  if (this.robot.position.toString() == this.belt.position.toString()) return this.print();
-  return 0
+  if (this.robot.position.toString() == this.belt.position.toString()) this.dropBags = this.bags;
 };
 
 Warehouse.prototype.print = function () {
