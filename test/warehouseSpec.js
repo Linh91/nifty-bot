@@ -150,6 +150,8 @@ describe('Warehouse', function() {
       warehouse.commands("npppnd")
       warehouse.output();
       assert.deepEqual(warehouse.robot.position, [ 0, 1 ]);
+      warehouse.output();
+      assert.deepEqual(warehouse.bags, 2);
     })
   })
 });

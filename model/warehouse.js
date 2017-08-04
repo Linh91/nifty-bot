@@ -39,21 +39,6 @@ Warehouse.prototype.xAxis = function () {
   this.instructions.shift()
 };
 
-// Warehouse.prototype.bagDuty = function () {
-//   this.cratePos.push(this.crate.cratesArray[0][0])
-//   this.cratePos.push(this.crate.cratesArray[0][1])
-//   if (this.instructions[0] == "p" && this.robot.position.toString() == this.cratePos) {
-//     if (this.instructions[1] == "p") {
-//       this.multiPickups()
-//     } else {
-//       }
-//     }
-//     this.multiPickups();
-//   }
-//   this.instructions.shift()
-// }
-// }
-
 Warehouse.prototype.bagDuty = function () {
   this.cratePos.push(this.crate.cratesArray[0][0])
   this.cratePos.push(this.crate.cratesArray[0][1])
@@ -61,17 +46,20 @@ Warehouse.prototype.bagDuty = function () {
     if (this.instructions[1] == "p") {
       this.multiPickups()
     } else {
+      this.cratePos = []
+      this.crate.cratesArray[0].splice(0,1)
     }
   }
   this.multiPickups()
+  this.cratePos = []
+  this.crate.cratesArray.splice(0,1)
 }
 
 Warehouse.prototype.multiPickups = function () {
   if (this.crate.cratesArray[0][2] > 0) this.bags += 1
   this.instructions.shift()
 };
-// this.cratePos.push(this.crate.cratesArray[0][0])
-// this.cratePos.push(this.crate.cratesArray[0][1])
+
 // if (this.instructions[0] == "p" && this.robot.position.toString() == this.cratePos) {
 //   if (this.crate.cratesArray[0][2] > 0) this.bags += 1; {
 //     if (this.instructions[1] != "p") {
