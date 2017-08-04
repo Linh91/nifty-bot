@@ -8,6 +8,7 @@ const Warehouse = function() {
   this.robot = new Robot()
   this.instructions = []
   this.passedInstruct = []
+  this.bags = 0
 }
 
 Warehouse.prototype.instruct = function(arguments) {
@@ -22,21 +23,55 @@ Warehouse.prototype.instruct = function(arguments) {
 Warehouse.prototype.output = function () {
   if (this.instructions[0] == "n") {
     this.robot.position[1] += 1
+    this.instructions.shift()
+    if (this.robot.position.toString() == this.crate.position.toString()) {
+      this.pickupBags()
+    }
   } else if (this.instructions[0] == "e") {
     this.robot.position[0] += 1
+    this.instructions.shift()
+    if (this.robot.position.toString() == this.crate.position.toString()) {
+      this.pickupBags()
+    }
   } else if (this.instructions[0] == "s") {
     this.robot.position[1] -= 1
+    this.instructions.shift()
+    if (this.robot.position.toString() == this.crate.position.toString()) {
+      this.pickupBags()
+    }
   } else if (this.instructions[0] == "w") {
     this.robot.position[0] -= 1
+    this.instructions.shift()
+    if (this.robot.position.toString() == this.crate.position.toString()) {
+      this.pickupBags()
+    }
+  } else if (this.instructions[0] == "d") {
+     return this.drop()
+  } else if (this.instructions[0] == "p") {
+     this.pickupBags()
   }
 };
 
-// Warehouse.prototype.pickupBags = function () {
-//   if (this.robot.position.toString() == this.crate.position.toString()) {
-//     this.pickupBags();
-//   }
-//   this.passedInstruct.push(this.instructions[0])
-//   this.instructions.shift()
-//   this.output();
-// };
+Warehouse.prototype.pickupBags = function () {
+    this.bags += 1
+    this.instructions.shift()
+}
+
+Warehouse.prototype.drop = function () {
+ if (this.robot.position.toString() == this.belt.position.toString()) {
+   return this.print()
+ } else {
+   return 0
+ }
+};
+
+Warehouse.prototype.print = function () {
+  console.log(this.bags)
+  console.log(this.robot.position.toString() + " OK")
+};
+
+Warehouse.prototype.broken = function () {
+  console.log(this.robot.position.toString() + " BROKEN")
+};
+
 module.exports = Warehouse;

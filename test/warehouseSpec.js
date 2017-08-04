@@ -124,4 +124,21 @@ describe('Warehouse', function() {
       assert.deepEqual(warehouse.robot.position, [ -1, 2 ]);
     });
   });
+
+  describe('Execution', function() {
+    it('carries out instructions and once executes removes that instruction', function() {
+      var warehouse = new Warehouse();
+      warehouse.robot.givePosition(0,2);
+      warehouse.instruct("w");
+      warehouse.output();
+      assert.deepEqual(warehouse.instructions, []);
+    });
+    it('carries out instructions and once executes removes that instruction', function() {
+      var warehouse = new Warehouse();
+      warehouse.robot.givePosition(0,2);
+      warehouse.instruct("wn");
+      warehouse.output();
+      assert.deepEqual(warehouse.instructions, [ "n" ]);
+    });
+  });
 });
