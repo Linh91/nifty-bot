@@ -30,3 +30,8 @@
                                         '--------''--------'
 
 This is a robot application that can take commands, navigate to crates, load from crates and navigates to conveyor-belt.
+
+### How to get started
+
+<code> git clone https://github.com/Linh91/nifty-bot.git </code>
+<code> npm install </code>
