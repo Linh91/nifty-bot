@@ -7,7 +7,6 @@ const Warehouse = function() {
   this.crate = new Crate()
   this.robot = new Robot()
   this.instructions = []
-  this.passedInstruct = []
   this.bags = 0
 }
 
@@ -22,17 +21,9 @@ Warehouse.prototype.instruct = function(arguments) {
 
 Warehouse.prototype.output = function () {
   if (this.instructions[0] == "n") {
-    this.robot.position[1] += 1
-    this.instructions.shift()
-    if (this.robot.position.toString() == this.crate.position.toString()) {
-      this.pickupBags()
-    }
+    this.north()
   } else if (this.instructions[0] == "e") {
-    this.robot.position[0] += 1
-    this.instructions.shift()
-    if (this.robot.position.toString() == this.crate.position.toString()) {
-      this.pickupBags()
-    }
+    this.east();
   } else if (this.instructions[0] == "s") {
     this.robot.position[1] -= 1
     this.instructions.shift()
@@ -49,6 +40,22 @@ Warehouse.prototype.output = function () {
      return this.drop()
   } else if (this.instructions[0] == "p") {
      this.pickupBags()
+  }
+};
+
+Warehouse.prototype.north = function () {
+  this.robot.position[1] += 1
+  this.instructions.shift()
+  if (this.robot.position.toString() == this.crate.position.toString()) {
+    this.pickupBags()
+  }
+};
+
+Warehouse.prototype.east = function () {
+  this.robot.position[0] += 1
+  this.instructions.shift()
+  if (this.robot.position.toString() == this.crate.position.toString()) {
+    this.pickupBags()
   }
 };
 
