@@ -6,25 +6,25 @@ describe('Warehouse', function() {
   describe('instructions', function() {
     it('are given for the robot', function() {
       var warehouse = new Warehouse();
-      warehouse.instruct("ns")
+      warehouse.commands("ns")
       assert.deepEqual(warehouse.instructions, ["n", "s"]);
     });
 
     it('can be any number of characters', function() {
       var warehouse = new Warehouse();
-      warehouse.instruct("nppsse")
+      warehouse.commands("nppsse")
       assert.deepEqual(warehouse.instructions, ["n", "p", "p", "s", "s", "e"]);
     });
 
     it('can be unlimited', function() {
       var warehouse = new Warehouse();
-      warehouse.instruct("newpsesennppppeeee")
+      warehouse.commands("newpsesennppppeeee")
       assert.deepEqual(warehouse.instructions, ["n", "e", "w", "p", "s", "e","s", "e","n", "n", "p", "p", "p", "p", "e","e","e","e",]);
     });
 
     it('can take directions in an array form', function() {
       var warehouse = new Warehouse();
-      warehouse.instruct(["s", "n", "e"])
+      warehouse.commands(["s", "n", "e"])
       assert.deepEqual(warehouse.instructions, ["s", "n", "e"]);
     });
   });
@@ -63,7 +63,7 @@ describe('Warehouse', function() {
     it('will increase y when north', function() {
       var warehouse = new Warehouse();
       warehouse.robot.givePosition(1,1);
-      warehouse.instruct("n");
+      warehouse.commands("n");
       warehouse.output();
       assert.deepEqual(warehouse.robot.position, [ 1, 2 ]);
     });
@@ -71,7 +71,7 @@ describe('Warehouse', function() {
     it('y cordinates will increase when N', function() {
       var warehouse = new Warehouse();
       warehouse.robot.givePosition(4,2);
-      warehouse.instruct("n");
+      warehouse.commands("n");
       warehouse.output();
       assert.deepEqual(warehouse.robot.position, [ 4, 3 ]);
     });
@@ -79,7 +79,7 @@ describe('Warehouse', function() {
     it('will increase x when east', function() {
       var warehouse = new Warehouse();
       warehouse.robot.givePosition(1,1);
-      warehouse.instruct("e");
+      warehouse.commands("e");
       warehouse.output();
       assert.deepEqual(warehouse.robot.position, [ 2, 1 ]);
     });
@@ -87,7 +87,7 @@ describe('Warehouse', function() {
     it('x cordinates will increase when E', function() {
       var warehouse = new Warehouse();
       warehouse.robot.givePosition(4,2);
-      warehouse.instruct("e");
+      warehouse.commands("e");
       warehouse.output();
       assert.deepEqual(warehouse.robot.position, [ 5, 2 ]);
     });
@@ -95,7 +95,7 @@ describe('Warehouse', function() {
     it('will decrease y when south', function() {
       var warehouse = new Warehouse();
       warehouse.robot.givePosition(5,3);
-      warehouse.instruct("s");
+      warehouse.commands("s");
       warehouse.output();
       assert.deepEqual(warehouse.robot.position, [ 5, 2 ]);
     });
@@ -103,7 +103,7 @@ describe('Warehouse', function() {
     it('y cordinates will decrease when S', function() {
       var warehouse = new Warehouse();
       warehouse.robot.givePosition(8,2);
-      warehouse.instruct("s");
+      warehouse.commands("s");
       warehouse.output();
       assert.deepEqual(warehouse.robot.position, [ 8, 1 ]);
     });
@@ -111,7 +111,7 @@ describe('Warehouse', function() {
     it('will decrease x when west', function() {
       var warehouse = new Warehouse();
       warehouse.robot.givePosition(9,4);
-      warehouse.instruct("w");
+      warehouse.commands("w");
       warehouse.output();
       assert.deepEqual(warehouse.robot.position, [ 8, 4 ]);
     });
@@ -119,7 +119,7 @@ describe('Warehouse', function() {
     it('x cordinates will decrease when W', function() {
       var warehouse = new Warehouse();
       warehouse.robot.givePosition(0,2);
-      warehouse.instruct("w");
+      warehouse.commands("w");
       warehouse.output();
       assert.deepEqual(warehouse.robot.position, [ -1, 2 ]);
     });
@@ -129,14 +129,14 @@ describe('Warehouse', function() {
     it('carries out instructions and once executes removes that instruction', function() {
       var warehouse = new Warehouse();
       warehouse.robot.givePosition(0,2);
-      warehouse.instruct("w");
+      warehouse.commands("w");
       warehouse.output();
       assert.deepEqual(warehouse.instructions, []);
     });
     it('carries out instructions and once executes removes that instruction', function() {
       var warehouse = new Warehouse();
       warehouse.robot.givePosition(0,2);
-      warehouse.instruct("wn");
+      warehouse.commands("wn");
       warehouse.output();
       assert.deepEqual(warehouse.instructions, [ "n" ]);
     });

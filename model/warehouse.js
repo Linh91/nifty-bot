@@ -11,7 +11,7 @@ const Warehouse = function() {
   this.dropBags = 0
 }
 
-Warehouse.prototype.instruct = function(arguments) {
+Warehouse.prototype.commands = function(arguments) {
   if (typeof arguments == 'string') arguments = arguments.split('');
   return this.instructions = this.instructions.concat(arguments)
 };
