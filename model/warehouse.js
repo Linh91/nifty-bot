@@ -8,7 +8,7 @@ const Warehouse = function() {
   this.robot = new Robot()
   this.instructions = []
   this.bags = 0
-  this.dropBags = 0
+  this.droppedBags = 0
   this.cratePos = []
 }
 
@@ -47,7 +47,7 @@ Warehouse.prototype.bagDuty = function () {
       this.pickup();
     }
   } else if (this.instructions[0] == "d" && this.robot.position.toString() == this.belt.position.toString()) {
-    this.dropBags = this.bags;
+    this.droppedBags = this.bags;
     this.commandOutput()
   } else {
     this.broken()

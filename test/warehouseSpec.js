@@ -1,4 +1,5 @@
 const Warehouse = require("../model/warehouse")
+const sinon  = require('sinon');
 var assert = require('assert');
 var expect = require('chai').expect;
 
@@ -152,13 +153,15 @@ describe('Warehouse', function() {
       assert.deepEqual(warehouse.robot.position, [ 0, 1 ]);
       warehouse.output();
       assert.deepEqual(warehouse.bags, 1);
-    })
-    // it('does not accept anything that isnt NESWDP', function() {
-    //   var warehouse = new Warehouse();
-    //   warehouse.commands("npppnd");
-    //   console.log(warehouse.output())
-    //   expect(warehouse.output()).to.equal('BOKEN');
-    //
-    // })
-  })
+    });
+
+    it('does not accept anything that isnt NESWDP', function() {
+      let spy = sinon.spy(console, 'log');
+      var warehouse = new Warehouse();
+      warehouse.commands("z");
+      warehouse.output()
+      assert(spy.calledWith(0))
+      spy.restore();
+    });
+  });
 });
