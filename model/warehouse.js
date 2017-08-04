@@ -36,11 +36,7 @@ Warehouse.prototype.output = function () {
 };
 
 Warehouse.prototype.yAxis = function () {
-  if (this.instructions[0] == "n") {
-    this.robot.position[1] += 1
-  } else {
-    this.robot.position[1] -= 1
-  }
+  (this.instructions[0] == "n") ? this.robot.position[1] += 1 : this.robot.position[1] -= 1
   this.checkingPosition();
 };
 
