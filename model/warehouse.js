@@ -25,54 +25,55 @@ Warehouse.prototype.output = function () {
   } else if (this.instructions[0] == "d" || this.instructions[0] == "p") {
     return this.bagDuty()
   } else {
-    this.print()
+    this.broken()
   }
 };
 
 Warehouse.prototype.yAxis = function () {
   (this.instructions[0] == "n") ? this.robot.position[1] += 1 : this.robot.position[1] -= 1
-  this.instructions.shift()
+  this.commandOutput()
 };
 
 Warehouse.prototype.xAxis = function () {
   (this.instructions[0] == "e") ? this.robot.position[0] += 1 : this.robot.position[0] -= 1
-  this.instructions.shift()
+  this.commandOutput()
 };
 
 Warehouse.prototype.bagDuty = function () {
-  this.cratePos.push(this.crate.cratesArray[0][0])
-  this.cratePos.push(this.crate.cratesArray[0][1])
-  if (this.instructions[0] == "p" && this.robot.position.toString() == this.cratePos) {
-    if (this.instructions[1] == "p") {
-      this.multiPickups()
-    } else {
-      this.cratePos = []
-      this.crate.cratesArray[0].splice(0,1)
+  if (this.instructions[0] == "p") {
+    this.cratePos.push(this.crate.cratesArray[0][0])
+    this.cratePos.push(this.crate.cratesArray[0][1])
+    if (this.instructions[0] == "p" && this.robot.position.toString() == this.cratePos) {
+      this.pickup();
     }
+  } else if (this.instructions[0] == "d" && this.robot.position.toString() == this.belt.position.toString()) {
+    this.dropBags = this.bags;
+    this.commandOutput()
   }
-  this.multiPickups()
-  this.cratePos = []
-  this.crate.cratesArray.splice(0,1)
+  this.broken()
 }
 
 Warehouse.prototype.multiPickups = function () {
   if (this.crate.cratesArray[0][2] > 0) this.bags += 1
-  this.instructions.shift()
+  this.commandOutput()
 };
 
-// if (this.instructions[0] == "p" && this.robot.position.toString() == this.cratePos) {
-//   if (this.crate.cratesArray[0][2] > 0) this.bags += 1; {
-//     if (this.instructions[1] != "p") {
-//       this.crate.cratesArray.splice(0,1);
-//     } return this.bagDuty()
-//   }
-// } else if (this.instructions[0] == "d" && this.robot.position.toString() == this.belt.position.toString()) {
-//   this.dropBags = this.bags;
-// } else {
-//   this.broken()
-// }
-// this.instructions.shift()
+Warehouse.prototype.pickup = function () {
+  if (this.instructions[1] == "p") {
+    this.multiPickups()
+    this.cratePos = []
+  }
+  else {
+    this.multiPickups()
+    this.cratePos = []
+    this.crate.cratesArray.splice(0,1)
+  }
+};
 
+Warehouse.prototype.commandOutput = function () {
+  this.instructions.shift()
+  if (this.instructions.length <= 1) return this.print()
+};
 Warehouse.prototype.print = function () {
   console.log(this.bags)
   console.log(this.robot.position.toString() + " OK")
