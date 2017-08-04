@@ -46,14 +46,14 @@ describe('Warehouse', function() {
   describe('crates', function() {
     it('should be able to give information about crate', function() {
       var warehouse = new Warehouse();
-      warehouse.crates.details(2, 5, 2);
-      assert.deepEqual(warehouse.crates.cratesArray, [ [ 2, 5, 2 ] ])
+      warehouse.crate.details(2, 5, 2);
+      assert.deepEqual(warehouse.crate.cratesArray, [ [ 2, 5, 2 ] ])
     });
 
     it('will return details about crates', function() {
       var warehouse = new Warehouse();
-      warehouse.crates.details(4, 1, 6);
-      assert.deepEqual(warehouse.crates.cratesArray, [ [ 4, 1, 6 ] ])
+      warehouse.crate.details(4, 1, 6);
+      assert.deepEqual(warehouse.crate.cratesArray, [ [ 4, 1, 6 ] ])
     });
   });
 
@@ -139,4 +139,17 @@ describe('Warehouse', function() {
       assert.deepEqual(warehouse.instructions, [ "n" ]);
     });
   });
+
+  describe('Correct output', function() {
+    it('returns the correct output when completes execution', function() {
+      var warehouse = new Warehouse()
+      warehouse.robot.givePosition(0,0)
+      warehouse.belt.givePosition(0,2)
+      warehouse.crate.details(0,1,10)
+      warehouse.crate.details(-1,-2,5)
+      warehouse.commands("npppnd")
+      warehouse.output();
+      assert.deepEqual(warehouse.robot.position, [ 0, 1 ]);
+    })
+  })
 });
