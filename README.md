@@ -42,6 +42,11 @@ An output will be given which will include:
 - amount of bags picked up
 - cordinates of robot position and status of robot
 
+### Examples of test runs
+
+<img src="https://user-images.githubusercontent.com/17644847/28984123-50bb969c-7954-11e7-8242-fa9e2e7cd4ea.png" width="350"><img src="https://user-images.githubusercontent.com/17644847/28984125-50bfc32a-7954-11e7-916c-88305ab36559.png" width="350">
+<img src="https://user-images.githubusercontent.com/17644847/28984124-50beecca-7954-11e7-9cb5-aabe75771e5f.png" width="350">
+
 ### How to get started
 
 <code> git clone https://github.com/Linh91/nifty-bot.git </code> <br>
