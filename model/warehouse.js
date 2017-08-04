@@ -39,10 +39,8 @@ Warehouse.prototype.xAxis = function () {
 
 Warehouse.prototype.checkingPosition = function () {
   this.instructions.shift()
-  if (this.robot.position.toString() == this.crate.position.toString()) {
-    if (this.instructions[0] == "p") {
-      this.pickupBags()
-    };
+  if (this.robot.position.toString() == this.crate.position.toString() && this.instructions[0] == "p") {
+    this.pickupBags()
   };
 };
 
