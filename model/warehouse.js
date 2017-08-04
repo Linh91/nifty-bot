@@ -57,7 +57,7 @@ Warehouse.prototype.multiplePickups = function () {
 
 Warehouse.prototype.pickup = function () {
   if (this.instructions[1] == "p") this.multiplePickups();
-  else if (this.instructions[1] != "p") {
+  else if {
     this.multiplePickups();
     this.crate.cratesArray.splice(0,1);
   };
