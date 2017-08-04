@@ -171,6 +171,22 @@ describe('Warehouse', function() {
       assert(spy.calledWith(2))
       spy.restore();
     });
+
+    it('returns output when last command is run', function() {
+      let spy = sinon.spy(console, 'log');
+      warehouse.robot.givePosition(3,2);
+      warehouse.belt.givePosition(3,2);
+      warehouse.crate.details(3,2,10);
+      warehouse.crate.details(-1,-2,5);
+      warehouse.commands("ppppd");
+      warehouse.run();
+      warehouse.run();
+      warehouse.run();
+      warehouse.run();
+      warehouse.run();
+      assert(spy.calledWith(4));
+      spy.restore();
+    });
   });
 
   describe('Multiple pickups', function() {
@@ -185,6 +201,33 @@ describe('Warehouse', function() {
       assert.deepEqual(warehouse.bags, 1);
       warehouse.run();
       assert.deepEqual(warehouse.bags, 2);
+    });
+
+    it('does not output bags if it has not been dropped', function() {
+      let spy = sinon.spy(console, 'log');
+      warehouse.robot.givePosition(0,2);
+      warehouse.belt.givePosition(0,2);
+      warehouse.crate.details(0,2,10);
+      warehouse.crate.details(-1,-2,5);
+      warehouse.commands("pp");
+      warehouse.run();
+      warehouse.run();
+      assert(spy.calledWith(0));
+      spy.restore();
+    });
+  });
+
+  describe('Broken', function() {
+    it('will return broken if given a p but not in correct position', function() {
+      let spy = sinon.spy(console, 'log');
+      warehouse.robot.givePosition(3,2);
+      warehouse.belt.givePosition(5,2);
+      warehouse.crate.details(0,2,10);
+      warehouse.crate.details(-1,-2,5);
+      warehouse.commands("pp");
+      warehouse.run();
+      assert(spy.calledWith(0));
+      spy.restore();
     });
   });
 });

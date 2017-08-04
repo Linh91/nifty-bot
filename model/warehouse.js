@@ -1,6 +1,6 @@
-const Belt = require('./belt.js')
-const Crate = require('./crate.js')
-const Robot = require('./robot.js')
+const Belt = require('./belt.js');
+const Crate = require('./crate.js');
+const Robot = require('./robot.js');
 
 const Warehouse = function() {
   this.belt = new Belt();
@@ -39,6 +39,7 @@ Warehouse.prototype.pickDropFunction = function () {
     this.cratePos.push(this.crate.cratesArray[0][0]);
     this.cratePos.push(this.crate.cratesArray[0][1]);
     if (this.instructions[0] == "p" && this.robot.position.toString() == this.cratePos) this.pickup();
+    else this.broken();
   } else if (this.instructions[0] == "d" && this.robot.position.toString() == this.belt.position.toString()) {
     this.droppedBags = this.bags;
     this.commandOutput();
@@ -67,13 +68,13 @@ Warehouse.prototype.commandOutput = function () {
 };
 
 Warehouse.prototype.print = function () {
-  console.log(this.bags)
-  console.log(this.robot.position.toString() + " OK")
+  console.log(this.droppedBags);
+  console.log(this.robot.position.toString() + " OK");
 };
 
 Warehouse.prototype.broken = function () {
-  console.log(this.bags)
-  console.log(this.robot.position.toString() + " BROKEN")
+  console.log(this.droppedBags);
+  console.log(this.robot.position.toString() + " BROKEN");
 };
 
 module.exports = Warehouse;
