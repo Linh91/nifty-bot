@@ -60,11 +60,9 @@ Warehouse.prototype.pickupBags = function () {
 }
 
 Warehouse.prototype.drop = function () {
- if (this.robot.position.toString() == this.belt.position.toString()) {
-   return this.print()
- } else {
-   return 0
- };
+  this.instructions.shift()
+  if (this.robot.position.toString() == this.belt.position.toString()) return this.print();
+  return 0
 };
 
 Warehouse.prototype.print = function () {
