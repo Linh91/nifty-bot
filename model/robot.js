@@ -20,4 +20,8 @@ Robot.prototype.south = function () {
   this.position[1] -= 1;
 };
 
+Robot.prototype.west = function () {
+  this.position[0] -= 1;
+};
+
 module.exports = Robot;

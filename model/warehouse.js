@@ -27,6 +27,9 @@ Warehouse.prototype.run = function () {
   } else if (this.instructions[0] == "S") {
       this.robot.south();
       this.commandOutput();
+  } else if (this.instructions[0] == "W") {
+      this.robot.west();
+      this.commandOutput();
   }
 
   // if (this.instructions[0] == "N" || this.instructions[0] == "S") this.yAxis();
