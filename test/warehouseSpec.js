@@ -90,14 +90,14 @@ describe('Warehouse', function() {
       warehouse.robot.givePosition(1,1);
       warehouse.commands("E");
       warehouse.run();
-      assert.deepEqual(warehouse.robot.position, [ 1, 1 ]);
+      assert.deepEqual(warehouse.robot.position, [ 2, 1 ]);
     });
 
     it('x cordinates will increase when E', function() {
       warehouse.robot.givePosition(4,2);
       warehouse.commands("E");
       warehouse.run();
-      assert.deepEqual(warehouse.robot.position, [ 4, 2 ]);
+      assert.deepEqual(warehouse.robot.position, [ 5, 2 ]);
     });
 
     it('will decrease y when south', function() {
