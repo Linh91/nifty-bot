@@ -30,12 +30,11 @@ Warehouse.prototype.run = function () {
   } else if (this.instructions[0] == "W") {
       this.robot.west();
       this.commandOutput();
+  } else if (this.instructions[0] == "D" || this.instructions[0] == "P") {
+      this.pickDropFunction();
+  } else {
+      this.broken();
   }
-
-  // if (this.instructions[0] == "N" || this.instructions[0] == "S") this.yAxis();
-  // else if (this.instructions[0] == "S" || this.instructions[0] == "W") this.xAxis();
-  // else if (this.instructions[0] == "D" || this.instructions[0] == "P") this.pickDropFunction();
-  // else this.broken();
 };
 
 Warehouse.prototype.yAxis = function () {
@@ -52,6 +51,7 @@ Warehouse.prototype.pickDropFunction = function () {
   if (this.instructions[0] == "P") {
     this.cratePosition.push(this.crate.cratesArray[0][0]);
     this.cratePosition.push(this.crate.cratesArray[0][1]);
+    console.log("crate array");
     if (this.instructions[0] == "P" && this.robot.position.toString() == this.cratePosition) this.pickup();
     else this.broken();
   } else if (this.instructions[0] == "D" && this.robot.position.toString() == this.belt.position.toString()) {
