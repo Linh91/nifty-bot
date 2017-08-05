@@ -32,7 +32,7 @@ Warehouse.prototype.run = function () {
   } else if (this.instructions[0] == "D" || this.instructions[0] == "P") {
       this.pickDropFunction();
   } else if (this.instructions.length > 0) {
-    this.broken()
+    this.broken();
   };
 };
 
@@ -51,12 +51,12 @@ Warehouse.prototype.pickDropFunction = function () {
 
 Warehouse.prototype.bagsDropped = function () {
   this.droppedBags = this.robot.pickedUpBags;
-  this.robot.pickedUpBags = 0
+  this.robot.pickedUpBags = 0;
   this.commandOutput();
 };
 
 Warehouse.prototype.multiplePickups = function () {
-  this.crate.cratesArray[0][2] -= 1
+  this.crate.cratesArray[0][2] -= 1;
   if (this.crate.cratesArray[0][2] > -1) this.robot.pickedUpBags += 1;
   this.cratePosition = [];
   this.commandOutput();
@@ -73,7 +73,7 @@ Warehouse.prototype.pickup = function () {
 
 Warehouse.prototype.commandOutput = function () {
   this.instructions.shift();
-  if (this.instructions.length == 0) this.status();;
+  if (this.instructions.length == 0) this.status();
   this.run();
 };
 
