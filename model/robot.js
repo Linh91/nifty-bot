@@ -16,9 +16,8 @@ Robot.prototype.east = function () {
   this.position[0] += 1;
 };
 
-// Warehouse.prototype.yAxis = function () {
-//   (this.instructions[0] == "N") ? this.robot.position[1] += 1 : this.robot.position[1] -= 1;
-//   this.commandOutput();
-// };
+Robot.prototype.south = function () {
+  this.position[1] -= 1;
+};
 
 module.exports = Robot;
