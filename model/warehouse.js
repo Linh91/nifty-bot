@@ -37,16 +37,6 @@ Warehouse.prototype.run = function () {
   }
 };
 
-Warehouse.prototype.yAxis = function () {
-  (this.instructions[0] == "N") ? this.robot.position[1] += 1 : this.robot.position[1] -= 1;
-  this.commandOutput();
-};
-
-Warehouse.prototype.xAxis = function () {
-  (this.instructions[0] == "S") ? this.robot.position[0] += 1 : this.robot.position[0] -= 1;
-  this.commandOutput();
-};
-
 Warehouse.prototype.pickDropFunction = function () {
   if (this.instructions[0] == "P") {
     this.cratePosition.push(this.crate.cratesArray[0][0]);
