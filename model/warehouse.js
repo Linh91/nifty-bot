@@ -18,10 +18,18 @@ Warehouse.prototype.commands = function(arguments) {
 };
 
 Warehouse.prototype.run = function () {
-  if (this.instructions[0] == "N" || this.instructions[0] == "S") this.yAxis();
-  else if (this.instructions[0] == "S" || this.instructions[0] == "W") this.xAxis();
-  else if (this.instructions[0] == "D" || this.instructions[0] == "P") this.pickDropFunction();
-  else this.broken();
+  if (this.instructions[0] == "N") {
+      this.robot.north();
+      this.commandOutput();
+  } else if (this.instructions[0] == "E") {
+      this.robot.east();
+      this.commandOutput();
+  }
+
+  // if (this.instructions[0] == "N" || this.instructions[0] == "S") this.yAxis();
+  // else if (this.instructions[0] == "S" || this.instructions[0] == "W") this.xAxis();
+  // else if (this.instructions[0] == "D" || this.instructions[0] == "P") this.pickDropFunction();
+  // else this.broken();
 };
 
 Warehouse.prototype.yAxis = function () {
