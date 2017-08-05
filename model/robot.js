@@ -1,7 +1,6 @@
-// const Warehouse = require('./warehouse.js');
-
 const Robot = function() {
   this.position = [];
+  this.pickedUpBags = 0
 }
 
 Robot.prototype.givePosition = function (x, y) {

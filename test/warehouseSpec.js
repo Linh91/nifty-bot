@@ -23,7 +23,6 @@ describe('Warehouse', function() {
 
     it('can be unlimited', function() {
       warehouse.commands("NEWPS");
-      console.log(warehouse.instructions)
       assert.deepEqual(warehouse.instructions, [ 'N', 'E', 'W', 'P', 'S' ]);
     });
 
@@ -189,7 +188,7 @@ describe('Warehouse', function() {
       warehouse.crate.details(-1,-2,5);
       warehouse.commands("NPPND");
       warehouse.run();
-      assert.deepEqual(warehouse.bags, 2);
+      assert.deepEqual(warehouse.droppedBags, 2);
     });
 
     it('does not output bags if it has not been dropped', function() {
@@ -207,7 +206,7 @@ describe('Warehouse', function() {
   });
 
   describe('Broken', function() {
-    it('will return broken if given a p but not in correct position', function() {
+    it('will return nothing if given a p but not in correct position', function() {
       let spy = sinon.spy(console, 'log');
       warehouse.robot.givePosition(3,2);
       warehouse.belt.givePosition(5,2);
