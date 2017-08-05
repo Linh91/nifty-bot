@@ -18,21 +18,21 @@ System.prototype.commands = function(arguments) {
 
 System.prototype.run = function () {
   if (this.instructions[0] == "N") {
-      this.robot.north();
-      this.commandOutput();
+    this.robot.north();
+    this.commandOutput(); 
   } else if (this.instructions[0] == "E") {
-      this.robot.east();
-      this.commandOutput();
+    this.robot.east();
+    this.commandOutput();
   } else if (this.instructions[0] == "S") {
-      this.robot.south();
-      this.commandOutput();
+    this.robot.south();
+    this.commandOutput();
   } else if (this.instructions[0] == "W") {
-      this.robot.west();
-      this.commandOutput();
+    this.robot.west();
+    this.commandOutput();
   } else if (this.instructions[0] == "D" || this.instructions[0] == "P") {
-      this.pickDropFunction();
+    this.pickDropFunction();
   } else if (this.instructions.length > 0) {
-    this.broken();
+     this.broken();
   };
 };
 
