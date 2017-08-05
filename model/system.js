@@ -2,7 +2,7 @@ const Belt = require('./belt.js');
 const Crate = require('./crate.js');
 const Robot = require('./robot.js');
 
-const Warehouse = function() {
+const System = function() {
   this.belt = new Belt();
   this.crate = new Crate();
   this.robot = new Robot();
@@ -11,12 +11,12 @@ const Warehouse = function() {
   this.cratePosition = [];
 }
 
-Warehouse.prototype.commands = function(arguments) {
+System.prototype.commands = function(arguments) {
   if (typeof arguments == 'string') arguments = arguments.split('');
   return this.instructions = this.instructions.concat(arguments);
 };
 
-Warehouse.prototype.run = function () {
+System.prototype.run = function () {
   if (this.instructions[0] == "N") {
       this.robot.north();
       this.commandOutput();
@@ -36,10 +36,9 @@ Warehouse.prototype.run = function () {
   };
 };
 
-Warehouse.prototype.pickDropFunction = function () {
+System.prototype.pickDropFunction = function () {
   if (this.instructions[0] == "P") {
-    this.cratePosition.push(this.crate.cratesArray[0][0]);
-    this.cratePosition.push(this.crate.cratesArray[0][1]);
+    this.currentCrate();
     if (this.instructions[0] == "P" && this.robot.position.toString() == this.cratePosition) this.pickup();
     else this.broken();
   } else if (this.instructions[0] == "D" && this.robot.position.toString() == this.belt.position.toString()) {
@@ -49,20 +48,25 @@ Warehouse.prototype.pickDropFunction = function () {
   };
 };
 
-Warehouse.prototype.bagsDropped = function () {
+System.prototype.currentCrate = function () {
+  this.cratePosition.push(this.crate.cratesArray[0][0]);
+  this.cratePosition.push(this.crate.cratesArray[0][1]);
+};
+
+System.prototype.bagsDropped = function () {
   this.droppedBags = this.robot.pickedUpBags;
   this.robot.pickedUpBags = 0;
   this.commandOutput();
 };
 
-Warehouse.prototype.multiplePickups = function () {
+System.prototype.multiplePickups = function () {
   this.crate.cratesArray[0][2] -= 1;
   if (this.crate.cratesArray[0][2] > -1) this.robot.pickedUpBags += 1;
   this.cratePosition = [];
   this.commandOutput();
 };
 
-Warehouse.prototype.pickup = function () {
+System.prototype.pickup = function () {
   if (this.instructions[1] == "P") this.multiplePickups();
   else {
     this.multiplePickups();
@@ -71,20 +75,20 @@ Warehouse.prototype.pickup = function () {
   };
 };
 
-Warehouse.prototype.commandOutput = function () {
+System.prototype.commandOutput = function () {
   this.instructions.shift();
   if (this.instructions.length == 0) this.status();
   this.run();
 };
 
-Warehouse.prototype.status = function () {
+System.prototype.status = function () {
   console.log(this.droppedBags);
   console.log(this.robot.position.toString() + " OK");
 };
 
-Warehouse.prototype.broken = function () {
+System.prototype.broken = function () {
   console.log(this.droppedBags);
   console.log(this.robot.position.toString() + " BROKEN");
 };
 
-module.exports = Warehouse;
+module.exports = System;
