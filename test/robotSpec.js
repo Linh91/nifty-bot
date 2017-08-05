@@ -5,7 +5,6 @@ var expect = require('chai').expect;
 describe('Robot', function() {
   var robot;
 
-
   beforeEach(function() {
     robot = new Robot();
   });
