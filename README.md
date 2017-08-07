@@ -56,6 +56,7 @@ An output will be given which will include:
 node console => <code> node </code><br>
 <code> const Warehouse = require('./model/warehouse.js') </code><br>
 <code> var warehouse = new Warehouse() </code>
+
 ### How to run test 
 
 <code> npm test </code> <br>
