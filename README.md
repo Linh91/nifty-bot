@@ -39,6 +39,8 @@ This is a robot application that can take commands, navigate to crates, load fro
 - Give description for crates; x, y cordinates and amount of bags
 - Give set of instructions for robot to perform e.g. "NSPPWSSD"
 
+### Instructions
+
 ### Output
 An output will be given which will include:
 - amount of bags picked up
