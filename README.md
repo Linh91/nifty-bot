@@ -40,12 +40,12 @@ This is a robot application that can take commands, navigate to crates, load fro
 - Give set of instructions for robot to perform e.g. "NSPPWSSD"
 
 ### Instructions
-N - "north"
-S - "south"
-W - "west"
-E - "east"
-P - "pick up"
-D - "drop"
+N - "north" <br>
+S - "south"<br>
+W - "west"<br>
+E - "east"<br>
+P - "pick up"<br>
+D - "drop"<br>
 
 ### Output
 An output will be given which will include:
