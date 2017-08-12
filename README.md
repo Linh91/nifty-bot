@@ -43,6 +43,7 @@ This is a robot application that can take commands, navigate to crates, load fro
 N - "north"
 S - "south"
 W - "west"
+E - "east"
 ### Output
 An output will be given which will include:
 - amount of bags picked up
