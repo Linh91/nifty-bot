@@ -45,6 +45,8 @@ S - "south"
 W - "west"
 E - "east"
 P - "pick up"
+D - "drop"
+
 ### Output
 An output will be given which will include:
 - amount of bags picked up
