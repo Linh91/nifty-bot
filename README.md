@@ -40,7 +40,7 @@ This is a robot application that can take commands, navigate to crates, load fro
 - Give set of instructions for robot to perform e.g. "NSPPWSSD"
 
 ### Instructions
-
+N - "north"
 ### Output
 An output will be given which will include:
 - amount of bags picked up
